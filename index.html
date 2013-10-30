@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>NodeJS</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="">
+		<meta name="author" content="Allan Esquina">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -17,6 +17,12 @@
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
+		<style>
+			body {
+				 background: #476619 !important;
+				}
+		</style>
+
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -24,6 +30,9 @@
 		<script>
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
+
+		<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+		<script src="http://localhost:3000/javascripts/script.js"></script>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -37,13 +46,365 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+					<h1>Node JS</h1>					
 				</section>
 
+				<section>
+					<section data-background="#665A19">
+						<h1>O que é Node JS?</h1>
+					</section>
+					<section data-transition="linear">
+						<h2>Uma plataforma para trabalhar com aplicações de alta concorrência.</h2>			
+					</section>
+					<section data-transition="linear">
+						<h1>WTF?</h1>			
+					</section>
+					<section data-transition="linear">
+						<h2>Aplicações escaláveis??</h2>			
+					</section>
+					<section data-transition="linear">
+						<h2>Ok, vamos rever alguns conceitos</h2>			
+					</section>
+					<section data-transition="linear">
+						<h2>Performance</h2>
+						<p>Habilidade que uma aplicação tem de 
+						atingir um objetivo, como por exemplo responder no 
+						menor tempo possível.</p>			
+					</section>
+					<section data-transition="linear">
+						<h2>Capacidade</h2> 
+						<p>A carga total que uma aplicação pode suportar.</p>								
+					</section>
+					<section data-transition="linear">
+						<h2>Escalabilidade</h2> 
+						<p>A habilidade de uma aplicação manter 
+						a performance quando a carga de trabalho aumenta. 
+						É a junção da capacidade e da performance.</p>									
+					</section>
+					<section data-transition="linear">
+						<h2>Performance</h2>
+						<p>A velocidade do carro.</p>			
+					</section>
+					<section data-transition="linear">
+						<h2>Capacidade</h2> 
+						<p>O limite de velocidade e o número de pistas da estrada.</p>						
+					</section>
+					<section data-transition="linear">
+						<h2>Escalabilidade</h2> 
+						<p>Quantos carros e pistas eu posso adicionar sem diminuir a velocidade do tráfego.</p>									
+					</section>
+					<section data-transition="linear">
+						<h2>Uma plataforma para facilitar o desenvolvimento de aplicações escaláveis.</h2>			
+					</section>
+					<section data-transition="linear">
+						<h1>Como?</h1>			
+					</section>
+				</section>
+
+				<section data-background="#193B66">
+					<section>
+						<h1>Sync/Async</h1>			
+					</section>
+					<section data-transition="linear" data-background="#661919">
+						<h2>Arquitetura Bloqueante</h2>			
+					</section>
+					<section data-transition="linear" data-background="#661919">
+						<h2>Executa um processo por vez, gerando uma fila de processos.</h1>			
+					</section>
+					<section data-transition="linear" data-background="#661919">
+						<p>Imagine que cada requisição no server seja um processo.</p>			
+					</section>
+					<section data-transition="linear" data-background="#661919">
+						<p>Se tivermos um número muito grande de requisições simultâneas, a fila de processos chegará ao seu limite, obrigando o servidor a dropar as requisições exedentes.</p>
+					</section>
+					<section data-transition="linear" data-background="#661919">
+						<h2>Código de status 503</h2>
+						<p>O servidor está temporariamente indisponível.</p>
+					</section>
+					<section data-transition="linear" data-background="#661919">
+						<h2>Síncrono</h2>
+						<h2>Blocking-Thread</h2>
+					</section>
+					
+					<section>
+						<h2>Arquitetura Não Bloqueante</h2>						
+					</section>
+					<section data-transition="linear">
+						<h2>O Oposto!</h2>						
+					</section>
+					<section data-transition="linear">
+						<h2>"Como assim? Explica ae po!"</h2>						
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<h2>Arquitetura do NodeJS</h2>						
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<img src="img/nodearc.jpg" alt="">						
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<h2>NodeJS é orientado a eventos</h2>						
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<h2>Possui um "Event Loop"</h2>						
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<h2>Loop Infinito que escuta e dispara eventos.</h2>						
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<h2>NodeJS é Single-Thread e trabalha com callbacks</h2>						
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<h2>Como assim?</h2>						
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<p>O nodejs trabalha apenas com uma fila, porém, quando ele recebe uma requisição, ele dispara um processo e volta pra esperar por outra.</p>						
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<p>Desta forma, a aplicação não é bloqueada, podendo receber e processar outra requisição.</p>
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<h2>E como eu sei quando um processo termina?</h2>
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<h1>Callback</h1>
+					</section>
+					<section data-transition="linear" data-background="#541966">
+						<h2>Esta forma de trabalhar é Assíncrona.</h2>
+					</section>
+				</section>
+				<section>
+					<section>						
+						<h1>Instalação</h1>
+					</section>
+					<section data-transition="linear">
+						<h2>Compilando o source</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+	sudo apt-get install python g++ make checkinstall
+mkdir ~/src && cd $_
+wget -N http://nodejs.org/dist/node-latest.tar.gz
+tar xzvf node-latest.tar.gz && cd node-v*
+./configure
+checkinstall #(remove the "v" in front of the version number in the dialog)
+sudo dpkg -i node_*
+						</code></pre>
+					</section>
+					<section data-transition="linear">
+						<h2>Advanced Packaging Tool</h2>
+						<p>nodejs 0.6.x</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					sudo apt-get install nodejs
+						</code></pre>
+					</section>
+					<section data-transition="linear">
+						<h2>Advanced Packaging Tool</h2>
+						<p>Versão mais recente</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					sudo apt-get update
+sudo apt-get install python-software-properties python g++ make
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install nodejs
+						</code></pre>
+					</section>
+					<section data-transition="linear">
+						<h2>Arch Linux</h2>						
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					pacman -S nodejs
+						</code></pre>
+					</section>
+					<section data-transition="linear">
+						<h2>Windows</h2>
+						<h2>Windows Installer (.msi)</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							http://nodejs.org/download/
+						</code></pre>						
+					</section>
+
+				</section>
+
+				<section>
+					<section data-transition="linear">
+						<h1>NPM</h1>
+						<h2>Node Packaged Modules</h2>
+					</section>
+					<section data-transition="linear">
+						<iframe src="https://npmjs.org/" style="width:100%; height:900px;" frameborder="0"></iframe>
+					</section>
+
+					<section data-transition="linear">
+						<h2>Gerenciando módulos</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+npm install nome_do_módulo (instala um módulo)
+npm install -g nome_do_módulo (instala um módulo global.)
+npm install nome_do_módulo --save (instala atualizando o package.json.)
+npm list (lista todos os módulos do projeto.)
+npm list -g (lista todos os módulos globais.)
+npm remove nome_do_módulo (desinstala um módulo do projeto.)
+npm remove -g nome_do_módulo (desinstala um módulo global.)
+npm update nome_do_módulo (atualiza a versão do módulo.)
+npm update -g nome_do_módulo (atualiza a versão do módulo global.)
+npm -v (exibe a versão atual do npm.)
+						</code></pre>
+					</section>
+
+					<section data-transition="linear">
+						<h1>package.json</h1>
+					</section>
+					<section data-transition="linear">
+						<h2>O que é?</h2>
+					</section>
+					<section data-transition="linear">
+						<h2>Um arquivo que descreve um módulo</h2>
+					</section>
+					<section data-transition="linear">
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+{
+	"name": "nome-do-módulo",
+	"description": "descrição do módulo",
+	"author": "Allan Esquina",
+	"version": "1.2.3",
+	"private": true,
+	"dependencies": {
+		"modulo-1": "1.0.0",
+		"modulo-2": "~1.0.0",
+		"modulo-3": ">=1.0.0"
+	},
+	"devDependencies": {
+		"modulo-4": "*"
+	}
+}
+						</code></pre>
+					</section>
+
+					<section data-transition="linear">
+						<h2>Entendendo Níveis de Versionamento</h2>
+						<p>Major (1), Minor (2) e Patch (3)</p>
+					</section>
+					<section data-transition="linear">
+						<h2>Entendendo as versões de dependências</h2>
+					</section>
+
+					<section data-transition="linear">
+							<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+{
+	...
+
+	"dependencies": {
+		"modulo-1": "1.0.0", (Pega a versão 1.0.0, é fixo)
+		"modulo-2": "~1.0.0",(Atualiza a nível de patch)
+		"modulo-3": ">=1.0.0" (Versão igual ou superior a 1.0.0) 
+	},
+	
+	"devDependencies": {
+		"modulo-4": "*" (Sempre a última versão)
+	}
+}
+						</code></pre>
+					</section>	
+				</section>
+
+				<section>
+					<section data-transition="linear">
+						<h1>Módulos</h1>
+					</section>
+					<section data-transition="linear">
+						<h2>O nodejs usa o padrão CommonsJS para organizar seus módulos</h2>
+					</section>
+					<section data-transition="linear">
+						<h2>Entendendo a fuñção require()</h2>
+					</section>
+					<section data-transition="linear">
+						<h2>Prefixos ./ /</h2>
+						<p>Os prefixos determinam a localização do módulo.</p>
+						<ul>
+							<li>/ utiliza o caminho absoluto do módulo</li>
+							<li>./ utiliza o caminho relativo a partir do caminho atual.</li>
+						</ul>
+					</section>
+					<section data-transition="linear">
+						<h2>Extensão dos módulos</h2>
+						<ul>
+							<li>.js: o arquivo é iterpretado como um arquivo de código fonte javascript;</li>
+
+							<li>.json: é utilizado um analisador JSON no arquivo;</li>
+
+							<li>.node: interpretado como um addon através do dlopen.</li>
+						</ul>
+					</section>
+					<section data-transition="linear">
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+require("http") Carrega um módulo incluido no núcleo do nodejs
+
+require("/nome-do-arquivo") carrega um arquivo colocando a extensão 
+(.js|.json|.node) no path absoluto do sistema de arquivo
+
+require("./nome-do-arquivo") carrega um arquivo no path relativo ao módulo 
+que chamou o require
+						</code></pre>
+					</section>
+					<section data-transition="linear">
+						<h2>Módulos de node_modules</h2>
+						<p>Quando o arquivo não é prefixado e não é nativo do Node core modules, o Node busca o módulo na pasta node_module.</p>
+					</section>
+
+					<section data-transition="linear">
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+require("modulo");
+						</code></pre>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/home/nodeapps/project/node_modules/modulo.js
+/home/nodeapps/node_modules/modulo.js
+/home/node_modules/modulo.js
+/node_modules/modulo.js
+						</code></pre>
+					</section>
+
+					<section data-transition="linear">
+						<h2>module.exports</h2>
+					</section>
+					<section data-transition="linear">
+						<h3>operacoes.js</h3>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+exports.soma = function (a,b) {
+	var resultado = a + b;
+	console.log(resultado);
+};
+
+exports.sub = function (a,b) {
+	var resultado = a - b;
+	console.log(resultado);
+};
+						</code></pre>
+					</section>
+					<section data-transition="linear">
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var obj = require("./operacoes");
+obj.soma(1,9); // 10
+obj.sub(1,9); // -8
+						</code></pre>
+					</section>
+					
+					<section data-transition="linear">
+						<h2>Cache</h2>
+						<p>Os módulos são salvos em cache no seu primeiro carregamento, logo, todas as chamadas retornarão o mesmo módulo.</p>
+					</section>
+					<section data-transition="linear">
+						<h2>Variávies do Escopo de um módulo</h2>						
+					</section>
+					<section data-transition="linear">
+						<h2>__filename</h2>
+						<p>O nome do arquivo do código que está sendo executado</p>
+					</section>
+					<section data-transition="linear">
+						<h2>__dirname</h2>
+						<p>O nome do diretório que está salvo o script que está sendo executado</p>
+					</section>
+					<section data-transition="linear">
+						<h2>process</h2>
+						<p>Um objeto que é associado ao presente processo em execução. Além de variáveis, este objeto tem métodos como process.exit, process.cwd e process.uptime</p>
+					</section>
+					
+				</section>
 				<section>
 					<h2>Heads Up</h2>
 					<p>

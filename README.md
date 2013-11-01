@@ -1,5 +1,5 @@
-# Apresentação sobre NodeJS
+## Apresentação sobre NodeJS
 
-## using reveal.js
+You can see a live demo <a href="http://allanesquina.github.io/slidesnodejs/" target="_blank">here</a>.
 
-Copyright (C) 2013 Hakim El Hattab, http://hakim.se
+### Using reveal.js
